@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			.mui-switch.mui-active::before{ content: "男";}
+			.mui-switch::before{ content: "女";}
+			h3{
+				height: 300px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 透明栏 tran -->
+		<header class="mui-bar mui-bar-nav mui-bar-transparent" data-offset="120px" >
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">标题</h1>
+		</header>
+		
+		<div class="mui-content " style="margin-top: 5px;">
+			
+			<button class="mui-btn mui-btn-blue" 
+					id="btn" 
+					data-loading-text="登录中"
+					data-loading-icon="mui-icon mui-icon-person"
+					data-loading-icon-position="right"
+					>
+				登录
+			</button>
+			
+			<h5>CheckBox</h5>
+			<form class="mui-input-group">
+				<div class="mui-input-row mui-checkbox mui-left">
+				  <label>checkbox</label>
+				  <input name="checkbox1" type="checkbox" >
+				</div>
+			</form>
+			
+			<!-- 切换按钮bd switch -->
+			<h5 class="mui-content-padded">switch</h5>
+			<div class="mui-input-row">
+				<label>性别</label>
+				<!-- id加外面 -->
+				<div class="mui-switch  mui-switch-blue" id="gender">
+					<div class="mui-switch-handle" ></div>
+				</div>
+			</div>
+			
+			<!-- 获取switch 打印 性别 -->
+			<div class="mui-content-padded">
+				<button type="button" class="mui-btn mui-btn-blue" id="get-btn-gender">获取性别</button>
+			</div>
+			<p class="mui-text-center" id="get-gender">打印信息...</p>
+			<!-- 写函数 -->
+			<script>
+				document.getElementById('gender').addEventListener('toggle',function(e){
+					document.getElementById('get-gender').innerHTML = event.detail.isActive;
+				})
+				
+				document.getElementById('get-btn-gender').addEventListener('tap',function(){
+					//bd switch
+					mui('.mui-switch').switch().toggle();
+					
+				})
+			</script>
+			<!-- accodring -->
+			<div id="sheet" class="mui-popover mui-popover-bottom mui-popover-action ">
+				<!-- 可选择菜单 -->
+				<ul class="mui-table-view">
+				  <li class="mui-table-view-cell">
+					<a href="#">菜单1</a>
+				  </li>
+				  <li class="mui-table-view-cell">
+					<a href="#">菜单2</a>
+				  </li>
+				</ul>
+				<!-- 取消菜单 -->
+				<ul class="mui-table-view">
+				  <li class="mui-table-view-cell">
+					<a href="#sheet"><b>取消</b></a>
+				  </li>
+				</ul>
+			</div>
+			<a href="#sheet" id="openSheet" class="mui-btn mui-btn-primary mui-btn-block">打开操作表</a>
+			
+			
+			<!-- 大哥(四个) -->
+			<button class="mui-btn mui-btn-block mui-btn-blue" id="dialog"> 弹出,各种弹出</button>
+			<p class="mui-text-center" id="dialog-btn">打印提示</p>
+			<script>
+				var btn = document.getElementById('dialog-btn');
+				document.getElementById('dialog').addEventListener('tap',function(){
+					// mui.alert('本月还剩1000G','您的余额','好的，我知道了',function (e) {
+					//    e.index;
+					//    btn.innerText = "您已经确认花费1000G"
+					// },'div')
+					// confirm 询问框
+					// mui.confirm('清空相册','您确认删除吗',['取消','确认'],function (e) {
+					// 	e.index
+					// 	btn.innerHTML = '您已清空相册'
+					// },'div')
+					 mui.prompt('您的本次的服务满意吗','满意...','输入您的建议',['取消','确认'],function (event) {
+					   console.log(event);
+					},'div')
+				})
+			</script>
+			
+			<!-- gird栅格 -->
+			<div class="mui-slider">
+			  <div class="mui-slider-group">
+				<!--第一个内容区容器-->
+				<div class="mui-slider-item">
+				  <p>fh382fh23ffwf32r32t</p>
+				  
+				</div>
+				<!--第二个内容区-->
+				<div class="mui-slider-item">
+				  <p>awdhuwahdi</p>
+				  
+				</div>
+				</div>
+			    <!-- 轮播按钮加里面 -->
+				<div class="mui-slider-indicator">
+								<div class="mui-indicator mui-active"></div>
+								<div class="mui-indicator"></div>
+								<div class="mui-indicator"></div>			
+				</div>
+			</div>
+			
+			<!-- input -->
+			<div class="mui-card">
+				<div class="mui-input-row">
+					<label>Input</label>
+					<input type="text" class="mui-input-clear" placeholder="普通输入框">
+				</div>
+				<div class="mui-input-row">
+					<label>Input</label>
+					<input type="password" class="mui-input-password" placeholder="密码框">
+				</div>
+			</div>
+			<div class="mui-input-row mui-search">
+				<input type="search" class="mui-input-clear mui-input-speech" placeholder="">
+			</div>
+			
+			<!-- list 列表? -->
+			<!-- mlist/acordion? -->
+			
+			<!-- Mbox -->
+			
+			<div class="mui-numbox" data-numbox-step='1' data-numbox-min='0' data-numbox-max='10'>
+				<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+				<input class="mui-input-numbox" type="number" />
+				<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+			</div>
+			
+			<!-- Range 滑块 -->
+			<div class="mui-input-row ">
+				<label>Range</label>
+				<input type="range" min="0" max="100" value="50">
+			</div>
+			<!-- 撑高页面 -->
+			<h3>-----------------------------------------</h3>
+			<!-- slider 图片轮播 要加文字? silder title -->
+			1
+			<h3>-----------------------------------------</h3>
+			<h3>-----------------------------------------</h3>
+			<h3>-----------------------------------------</h3>
+			<h3>-----------------------------------------</h3>
+		</div>
+		
+		<script>
+			document.getElementById('btn').addEventListener('tap',function(){
+				mui('#btn').button('loading');
+				// 定时关闭
+				setTimeout(function(e){
+					mui('#btn').button('reset');
+				},2000)
+			})
+		</script>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon mui-icon-phone"></span>
+				<span class="mui-tab-label">电话</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">邮件</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			 
+			 
+		</script>
+	</body>
+
+</html>
